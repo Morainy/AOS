@@ -16,18 +16,25 @@
  * =====================================================================================
  */
 #include "console.h"
+#include "gdt.h"
 #include "string.h"
 #include "debug.h"
 
 int kern_entry()
 {
 	init_debug();
+	init_gdt();
 	console_clear();
-	char str[] = "Hello, OS Kernel";
-	printk_color(rc_black , rc_green , "%s\n" , str);
-	//panic("test");
+	//char str1[] = "Hello, OS Kernel";
+	//char str2[] = "Hello, Morain Kernel";
+	printk_color(rc_black , rc_green , "Hello, OS kernel!\n");
+	//printk("str2 = %s\n",str2);
+	
+	//printk("strcmp(str1 , str2) = %d\n",strcmp(str1 , str2));
+	//print_cur_status();
+	panic("test");
 
-	print_cur_status();
+	//print_cur_status();
 
 	return 0;
 }
